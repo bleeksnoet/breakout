@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsta3dwdrtbvt"]
+
+[ext_resource type="Script" uid="uid://wk4bm6a1nn3v" path="res://entities/drops/Holodrop.gd" id="1_r67o3"]
+[ext_resource type="Texture2D" uid="uid://kcujldoy424a" path="res://assets/ballpower.png" id="2_obfbd"]
+[ext_resource type="AudioStream" uid="uid://g1n8y1hdd4oe" path="res://assets/pickupCoin.wav" id="3_5dfeo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_slx6q"]
+radius = 38.0132
+
+[node name="HoloDrop" type="CharacterBody2D"]
+z_index = 4096
+script = ExtResource("1_r67o3")
+
+[node name="bonuspoint" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="bonuspoint"]
+position = Vector2(38, 47)
+scale = Vector2(3.75, 3.75)
+texture = ExtResource("2_obfbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bonuspoint"]
+position = Vector2(38, 47)
+shape = SubResource("CircleShape2D_slx6q")
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5dfeo")
+
+[connection signal="area_entered" from="bonuspoint" to="." method="_on_bonuspoint_area_entered"]
+[connection signal="finished" from="PickUpSound" to="." method="_on_pick_up_sound_finished"]

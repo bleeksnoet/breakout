@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bovq6kik77y50"]
+
+[ext_resource type="Texture2D" uid="uid://i2l7seeyxu3d" path="res://icon.svg" id="1_q7lmi"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("1_q7lmi")
+emission_shape = 2
+emission_sphere_radius = 128.0
+spread = 180.0
+initial_velocity_max = 841.08

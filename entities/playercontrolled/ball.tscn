@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://blpgyua7icaoc"]
+
+[ext_resource type="Script" uid="uid://c8qlnqh47twnq" path="res://entities/playercontrolled/ball.gd" id="1_otg56"]
+[ext_resource type="Texture2D" uid="uid://du5lrgvn4o8pi" path="res://assets/ball.png" id="2_eyvwa"]
+[ext_resource type="AudioStream" uid="uid://descrtadjggh7" path="res://assets/bounce.wav" id="3_4j5xn"]
+[ext_resource type="AudioStream" uid="uid://cbpdnkolatmtr" path="res://assets/powerUp.wav" id="4_075x0"]
+[ext_resource type="Material" uid="uid://cbptnbi882jb2" path="res://entities/playercontrolled/holoball.tres" id="5_uq7r0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpdm0"]
+radius = 63.1269
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgr1o"]
+radius = 72.4431
+
+[node name="Ball" type="CharacterBody2D" groups=["Ball"]]
+collision_layer = 4
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_otg56")
+
+[node name="BaseBall" type="Sprite2D" parent="."]
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("2_eyvwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gpdm0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bgr1o")
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4j5xn")
+
+[node name="ParryNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_075x0")
+volume_db = -15.0
+
+[node name="HoloEffect" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("5_uq7r0")
+offset_left = -59.0
+offset_top = -59.0
+offset_right = 59.0
+offset_bottom = 59.0
+
+[node name="HoloBall" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0.313726, 0, 0.529412)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("2_eyvwa")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

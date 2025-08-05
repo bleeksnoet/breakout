@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://rd4rlei3sxjc"]
+
+[ext_resource type="Texture2D" uid="uid://c2mw6kw2hlu38" path="res://assets/walls.png" id="1_xtyjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kusjx"]
+size = Vector2(64, 64)
+
+[node name="Barricade" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("1_xtyjl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_kusjx")

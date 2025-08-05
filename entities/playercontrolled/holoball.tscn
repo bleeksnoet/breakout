@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://brt5ot8sbiwt3"]
+
+[ext_resource type="Script" uid="uid://cahvostvs7h43" path="res://entities/playercontrolled/holoball.gd" id="1_lrfq1"]
+[ext_resource type="Texture2D" uid="uid://du5lrgvn4o8pi" path="res://assets/ball.png" id="2_wnxuv"]
+[ext_resource type="Material" uid="uid://cbptnbi882jb2" path="res://entities/playercontrolled/holoball.tres" id="3_n7lja"]
+[ext_resource type="AudioStream" uid="uid://descrtadjggh7" path="res://assets/bounce.wav" id="4_tyakf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpdm0"]
+radius = 63.1269
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2ya4"]
+radius = 72.4431
+
+[node name="Holoball" type="CharacterBody2D" groups=["Ball"]]
+collision_layer = 16
+collision_mask = 17
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_lrfq1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("3_n7lja")
+offset_left = -59.0
+offset_top = -59.0
+offset_right = 59.0
+offset_bottom = 59.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.313726, 0, 0.529412)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("2_wnxuv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_gpdm0")
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tyakf")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_b2ya4")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

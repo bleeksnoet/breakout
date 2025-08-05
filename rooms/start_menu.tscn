@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://cg3ebfge12tu4"]
+
+[ext_resource type="Script" uid="uid://57m850euwjmw" path="res://rooms/start_menu.gd" id="1_c7jbr"]
+[ext_resource type="AudioStream" uid="uid://bx26aiwhb0dt7" path="res://assets/buttonpress.wav" id="2_bw1ho"]
+[ext_resource type="PackedScene" uid="uid://beyhrqldv1hx" path="res://assets/scene_trans.tscn" id="2_xvanq"]
+[ext_resource type="PackedScene" uid="uid://qr2ou1q6p5ki" path="res://assets/bg.tscn" id="2_yu2i6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q1csl"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_pfy3v"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_xvanq"]
+font_size = 32
+shadow_color = Color(1, 0, 0, 1)
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_c7jbr")
+
+[node name="SceneTrans" parent="." instance=ExtResource("2_xvanq")]
+Target = "uid://dt76adorl8n2d"
+
+[node name="Selectsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bw1ho")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Start" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -144.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+text = "Start"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = -128.0
+offset_top = 64.0
+offset_bottom = 104.0
+scale = Vector2(2, 2)
+text = "Quit"
+
+[node name="BG" parent="." instance=ExtResource("2_yu2i6")]
+z_index = -10
+scale = Vector2(4, 4)
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 6480, 5120)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -424.0
+offset_right = 102.0
+offset_bottom = -379.0
+text = "Bleeps' shitty"
+label_settings = SubResource("LabelSettings_q1csl")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -168.0
+offset_top = -384.0
+offset_right = 168.0
+offset_bottom = -296.0
+text = "BREAKOUT"
+label_settings = SubResource("LabelSettings_pfy3v")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 816.0
+offset_top = 488.0
+offset_right = 900.0
+offset_bottom = 511.0
+text = "version 1.1"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 752.0
+offset_top = -512.0
+offset_right = 897.0
+offset_bottom = -481.0
+text = "Reset ScoreBoard"
+
+[node name="HighscorePanel" type="Panel" parent="."]
+offset_left = -696.0
+offset_top = -320.0
+offset_right = -312.0
+offset_bottom = 256.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HighscorePanel"]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 6.0
+offset_right = 286.0
+offset_bottom = 51.0
+size_flags_horizontal = 4
+text = "HighScores:"
+label_settings = SubResource("LabelSettings_xvanq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HighscorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 70.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HighscorePanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="finished" from="Selectsound" to="." method="_on_selectsound_finished"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

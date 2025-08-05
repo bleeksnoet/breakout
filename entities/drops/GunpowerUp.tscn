@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://df1lhbyic2m02"]
+
+[ext_resource type="Script" uid="uid://cls0a82g4ds13" path="res://entities/drops/GunpowerUp.gd" id="1_3wqeo"]
+[ext_resource type="Texture2D" uid="uid://se07rf31qo8g" path="res://assets/Gundrop.png" id="2_4bo3k"]
+[ext_resource type="AudioStream" uid="uid://g1n8y1hdd4oe" path="res://assets/pickupCoin.wav" id="3_eevsu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_slx6q"]
+radius = 34.0147
+
+[node name="Gunpowerup" type="CharacterBody2D"]
+z_index = 4096
+script = ExtResource("1_3wqeo")
+
+[node name="bonuspoint" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="bonuspoint"]
+position = Vector2(37, 47)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_4bo3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bonuspoint"]
+position = Vector2(38, 47)
+shape = SubResource("CircleShape2D_slx6q")
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eevsu")
+
+[connection signal="area_entered" from="bonuspoint" to="." method="_on_bonuspoint_area_entered"]
+[connection signal="finished" from="PickUpSound" to="." method="_on_pick_up_sound_finished"]

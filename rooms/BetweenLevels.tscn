@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://lf85rio40s73"]
+
+[ext_resource type="Script" uid="uid://bku573gs6raxj" path="res://rooms/between_levels.gd" id="1_2xo2d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_svwhf"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_l48o7"]
+font_size = 32
+
+[node name="Betweenmenu" type="Node2D"]
+process_mode = 2
+script = ExtResource("1_2xo2d")
+
+[node name="Text" type="Label" parent="."]
+offset_left = 328.0
+offset_top = 16.0
+offset_right = 821.0
+offset_bottom = 104.0
+text = "Level Complete!"
+label_settings = SubResource("LabelSettings_svwhf")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+offset_left = 392.0
+offset_top = 104.0
+offset_right = 754.0
+offset_bottom = 168.0
+text = "Current Score: ERROR"
+label_settings = SubResource("LabelSettings_l48o7")
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="."]
+process_mode = 3
+offset_left = 536.0
+offset_top = 192.0
+offset_right = 615.0
+offset_bottom = 223.0
+text = "Save & Continue"
+
+[node name="Quit" type="Button" parent="."]
+process_mode = 3
+offset_left = 536.0
+offset_top = 256.0
+offset_right = 671.0
+offset_bottom = 287.0
+text = "Save & Quit"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

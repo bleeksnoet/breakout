@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cve2tdq16kdo4"]
+
+[ext_resource type="Script" uid="uid://d310gbmuosjk5" path="res://entities/Blocks/Block.gd" id="1_7c6nr"]
+[ext_resource type="Texture2D" uid="uid://bxta3oeuloe3w" path="res://assets/greenblock.png" id="2_t8r0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxwle"]
+size = Vector2(241, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nk00"]
+size = Vector2(256, 128)
+
+[node name="Block" type="StaticBody2D"]
+collision_layer = 257
+collision_mask = 0
+script = ExtResource("1_7c6nr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-05, -66)
+scale = Vector2(8, 8)
+texture = ExtResource("2_t8r0d")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_uxwle")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 20
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_5nk00")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="spawn" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

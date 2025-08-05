@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://bii1ijy2carsl"]
+
+[ext_resource type="Script" uid="uid://cvscb6nxqgk6p" path="res://rooms/pause_menu.gd" id="1_2twt1"]
+[ext_resource type="PackedScene" uid="uid://beyhrqldv1hx" path="res://assets/scene_trans.tscn" id="2_erftr"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2twt1")
+
+[node name="SceneTransReturn" parent="." instance=ExtResource("2_erftr")]
+Target = "uid://cg3ebfge12tu4"
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue"
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = 75.0
+offset_bottom = 64.0
+text = "Quit to main menu"
+
+[node name="Confirm" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -72.0
+offset_top = 80.0
+offset_right = -8.0
+offset_bottom = 111.0
+text = "Yes"
+
+[node name="Cancel" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 72.0
+offset_bottom = 111.0
+text = "No"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -56.0
+offset_top = 32.0
+offset_right = 50.0
+offset_bottom = 55.0
+text = "Are you Sure?"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qr2ou1q6p5ki"]
+
+[ext_resource type="Texture2D" uid="uid://6ucp3rm6vv61" path="res://assets/bg.png" id="1_1c30s"]
+
+[node name="BG" type="Sprite2D"]
+texture_repeat = 2
+texture = ExtResource("1_1c30s")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 64, 64)

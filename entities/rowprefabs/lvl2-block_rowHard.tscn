@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://8boqsxnqy022"]
+
+[ext_resource type="Script" uid="uid://b8tyto5xx2wp1" path="res://entities/rowprefabs/block_row.gd" id="1_yymhb"]
+[ext_resource type="PackedScene" uid="uid://cve2tdq16kdo4" path="res://entities/Blocks/block.tscn" id="2_dfqum"]
+
+[node name="BlockRow" type="Node2D" groups=["Blocks"]]
+script = ExtResource("1_yymhb")
+
+[node name="Block" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(128, 64)
+
+[node name="Block2" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(384, 64)
+
+[node name="Block3" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(640, 64)
+
+[node name="Block4" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(896, 64)
+
+[node name="Block5" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1152, 64)
+normal = false
+metalblock = true
+
+[node name="Block6" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1408, 64)
+
+[node name="Block7" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1664, 64)
+
+[node name="Block8" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1920, 64)
+
+[node name="Block9" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(2176, 64)
+
+[node name="Block10" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(256, 192)
+
+[node name="Block11" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(512, 192)
+
+[node name="Block12" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(768, 192)
+
+[node name="Block13" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1024, 192)
+
+[node name="Block14" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1280, 192)
+
+[node name="Block15" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1536, 192)
+
+[node name="Block16" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(1792, 192)
+
+[node name="Block17" parent="." instance=ExtResource("2_dfqum")]
+position = Vector2(2048, 192)

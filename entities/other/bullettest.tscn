@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ac8sqk0n8ay"]
+
+[ext_resource type="Script" uid="uid://bno5acbqd66kx" path="res://entities/other/bullettest.gd" id="1_h21d0"]
+[ext_resource type="Texture2D" uid="uid://du5lrgvn4o8pi" path="res://assets/ball.png" id="2_q8uki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpdm0"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kxox"]
+radius = 24.0
+
+[node name="Bullettest" type="CharacterBody2D" groups=["Ball"]]
+collision_layer = 4
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_h21d0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("2_q8uki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gpdm0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1kxox")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
