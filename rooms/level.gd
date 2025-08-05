@@ -93,7 +93,7 @@ func _input(event):
 	if Input.is_action_just_pressed("Pause"):
 		get_tree().paused = true
 		$PauseMenu.show()
-
+#FIXME crashes the game atm lol, ball is gone nothing to teleport
 func ResetBall():
 	Ball.position = origin
 	Ball.velocity.y = 0
