@@ -112,7 +112,8 @@ func GameOverCheck():
 	elif Global.BonusLives <= 0:
 		gameover()
 	else:
-		get_tree().reload_current_scene()
+		Global.BonusLives -= 1
+		ResetBall()
 
 func gameover():
 	gameoversound.playing = true
@@ -120,11 +121,10 @@ func gameover():
 	GameOverMenu.show()
 
 func _on_killzone_area_entered(area):
-	if Global.BonusLives <= 0:
-		gameover()
-	else:
-		Global.BonusLives -= 1
-		$Resettrans.Start()
+	if area.is_in_group("Block"):
+		area.queue_free()
+		await get_tree().process_frame
+		GameOverCheck()
 
 func _on_killzone_body_entered(body):
 	if body.is_in_group("Ball"):
